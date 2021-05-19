@@ -1,4 +1,6 @@
-
+from transformers import (
+    T5TokenizerFast as T5Tokenizer
+)
 load = False
 
 
@@ -7,7 +9,6 @@ def init():
     if not load:
         global torch, model, tokenizer
         torch = __import__("torch")
-        T5Tokenizer = __import__("transformers.T5TokenizerFast")
         model = torch.load('./model-store/model.pth')
         tokenizer = T5Tokenizer.from_pretrained('./config/')
         load = True

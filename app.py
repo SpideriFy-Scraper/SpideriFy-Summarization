@@ -1,12 +1,16 @@
-from flask import Flask
-from flask import jsonify
-from flask_restful import Api
 
+from flask import Flask, jsonify, request
+from Summarize import summarize
 
 app = Flask(__name__)
 
-@app.route('/')
+
+@app.route('/predictions/summarization', methods=['POST'])
 def post():
     """
+    Summarize this bitch
     """
-    return jsonify({})
+
+    data = request.form['text']
+
+    return jsonify({'result': summarize(str(data))})

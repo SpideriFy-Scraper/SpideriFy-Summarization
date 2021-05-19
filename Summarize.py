@@ -1,21 +1,17 @@
 
-import numpy as np
-import torch
-from transformers import (
-    T5TokenizerFast as T5Tokenizer
-)
-
 load = False
+
 
 def init():
     global load
     if not load:
-        np = __import__(numpy)
+        global torch, model, tokenizer
         torch = __import__(torch)
         T5Tokenizer = __import__(transformers.T5TokenizerFast)
         model = torch.load('./model-store/model.pth')
         tokenizer = T5Tokenizer.from_pretrained('./config/')
         load = True
+
 
 def summarize(text: str):
     init()
@@ -28,7 +24,7 @@ def summarize(text: str):
         add_special_tokens=True,
         return_tensors="pt"
     )
-    generated_ids = m.generate(
+    generated_ids = model.generate(
         input_ids=text_encoding["input_ids"],
         attention_mask=text_encoding["attention_mask"],
         max_length=150,

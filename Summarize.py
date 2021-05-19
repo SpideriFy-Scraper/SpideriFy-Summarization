@@ -7,7 +7,6 @@ from transformers import (
 
 load = False
 
-
 def init():
     global load
     if not load:
@@ -18,11 +17,8 @@ def init():
         tokenizer = T5Tokenizer.from_pretrained('./config/')
         load = True
 
-
 def summarize(text: str):
-
     init()
-
     text_encoding = tokenizer(
         text,
         max_length=512,
@@ -32,7 +28,6 @@ def summarize(text: str):
         add_special_tokens=True,
         return_tensors="pt"
     )
-
     generated_ids = m.generate(
         input_ids=text_encoding["input_ids"],
         attention_mask=text_encoding["attention_mask"],
@@ -42,11 +37,9 @@ def summarize(text: str):
         length_penalty=1.0,
         early_stopping=True
     )
-
     preds = [
         tokenizer.decode(gen_id, skip_special_tokens=True,
                          clean_up_tokenization_spaces=True)
         for gen_id in generated_ids
     ]
-
     return "".join(preds)

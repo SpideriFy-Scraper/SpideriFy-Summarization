@@ -40,7 +40,7 @@ eggs/
 .idea/
 parts/
 sdist/
-common/sentiment_model/1
+model-store/
 var/
 wheels/
 pip-wheel-metadata/
@@ -130,7 +130,7 @@ celerybeat.pid
 
 # .env
 .env
-.spiderify.env
+.summarization.env
 .env/
 .venv/
 env/

@@ -35,8 +35,10 @@ def summarize(text: str):
         early_stopping=True
     )
     preds = [
-        tokenizer.decode(gen_id, skip_special_tokens=True,
-                         clean_up_tokenization_spaces=True)
+        tokenizer.decode(
+            gen_id, skip_special_tokens=True,
+            clean_up_tokenization_spaces=True
+        )
         for gen_id in generated_ids
     ]
     return "".join(preds)

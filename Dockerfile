@@ -39,7 +39,7 @@ USER appuser
 
 # Install application into container
 COPY . .
-EXPOSE 8080
+EXPOSE 8000
 
 # Run the application
 CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]

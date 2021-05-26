@@ -1,3 +1,7 @@
+# docker run --rm 0-d -p 800:8000 -v /home/tesla/Project/SpideriFy/spiderify-summarization/model:/home/appuser/model summarization:local
+# For Test Use This:
+# http POST http://localhost:8000/predict text="Content"
+
 FROM python:3.8-slim as base
 
 # Setup Env

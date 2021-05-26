@@ -107,5 +107,4 @@ venv/
 */*/*/*.swp
 
 # Ignore Sentiment Model
-model-store/
-mysql/
+model/
